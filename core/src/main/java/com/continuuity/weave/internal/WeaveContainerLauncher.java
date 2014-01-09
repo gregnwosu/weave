@@ -24,7 +24,10 @@ import com.continuuity.weave.internal.state.StateNode;
 import com.continuuity.weave.launcher.WeaveLauncher;
 import com.continuuity.weave.zookeeper.NodeData;
 import com.continuuity.weave.zookeeper.ZKClient;
+import com.continuuity.weave.zookeeper.ZKOperations;
+import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import org.apache.zookeeper.KeeperException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,6 +65,10 @@ public final class WeaveContainerLauncher {
   public WeaveContainerController start(RunId runId, int instanceId, Class<?> mainClass, String classPath) {
     ProcessLauncher.PrepareLaunchContext.AfterResources afterResources = null;
     ProcessLauncher.PrepareLaunchContext.ResourcesAdder resourcesAdder = null;
+
+    // Clean up zookeeper path in case this is a retry and there are old messages and state there.
+    Futures.getUnchecked(ZKOperations.ignoreError(
+      ZKOperations.recursiveDelete(zkClient, "/" + runId), KeeperException.NoNodeException.class, null));
 
     // Adds all file to be localized to container
     if (!runtimeSpec.getLocalFiles().isEmpty()) {
