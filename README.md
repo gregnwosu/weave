@@ -1,3 +1,7 @@
+Annoucement 
+===========
+Weave has been accepted into the Apache Incubator under its new name: Twill. Development of Weave will be discontinued. Please go to twill.incubator.apache.org for all future issues and requests.
+ 
 What is Weave?
 ===============
 
