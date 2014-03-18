@@ -1,6 +1,6 @@
 <font color="red">Weave is now Apache Twill</font> 
 ============
-Weave has been accepted into the Apache Incubator under its new name: Twill. Development of Weave will be discontinued. Please go to [Apache Twill](twill.incubator.apache.org) ([twill.incubator.apache.org](twill.incubator.apache.org)) for all future issues and requests.
+Weave has been accepted into the Apache Incubator under its new name: Twill. Development of Weave will be discontinued. Please go to [Apache Twill](http://twill.incubator.apache.org) ([twill.incubator.apache.org](http://twill.incubator.apache.org)) for all future issues and requests.
  
 What is Weave?
 ===============
